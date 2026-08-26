@@ -44,7 +44,7 @@ export function AppSidebar() {
     <aside className="flex w-56 shrink-0 flex-col border-r border-[var(--border)] bg-[var(--surface)]">
       <div className="flex h-14 items-center gap-2 border-b border-[var(--border)] px-4">
         <Target className="h-5 w-5 text-[var(--accent)]" />
-        <span className="font-semibold tracking-tight">Scouter</span>
+        <span className="font-semibold tracking-tight">Zumelia Scout</span>
       </div>
       <nav className="flex-1 space-y-0.5 overflow-y-auto p-2">
         {nav.map((item) => {

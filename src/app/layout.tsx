@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
+import { PRODUCTION_APP_URL } from "@/lib/config";
 import "./globals.css";
 
 const display = Fraunces({
@@ -14,7 +15,10 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Scouter — AI Client Acquisition Agent",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL?.trim() || PRODUCTION_APP_URL,
+  ),
+  title: "Zumelia Scout — AI Client Acquisition Agent",
   description:
     "Tell us what you sell. Your AI agent finds who needs it — scout, analyze, outreach, and inbox in one workspace.",
 };

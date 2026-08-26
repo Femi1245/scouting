@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-export const SESSION_COOKIE = "scouter_session";
+export const SESSION_COOKIE = "zumelia_scout_session";
 
 export type SessionUser = {
   id: string;

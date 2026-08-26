@@ -7,7 +7,7 @@ export default function LandingPage() {
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-5">
         <div className="flex items-center gap-2 font-semibold tracking-tight">
           <Radar className="h-5 w-5 text-[var(--accent)]" />
-          Scouter
+          Zumelia Scout
         </div>
         <nav className="flex items-center gap-3 text-sm">
           <Link href="/login" className="text-[var(--muted)] hover:text-[var(--ink)]">
@@ -158,7 +158,7 @@ export default function LandingPage() {
       </section>
 
       <footer className="border-t border-[var(--border)] py-8 text-center text-xs text-[var(--muted)]">
-        © {new Date().getFullYear()} Scouter. Responsible outreach. User-controlled agents.
+        © {new Date().getFullYear()} Zumelia Scout. Responsible outreach. User-controlled agents.
       </footer>
     </div>
   );

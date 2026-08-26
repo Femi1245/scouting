@@ -1,4 +1,4 @@
-# Scouter — Autonomous AI Client Acquisition Agent
+# Zumelia Scout — Autonomous AI Client Acquisition Agent
 
 Tell the platform what you sell. Your AI agent scouts businesses, scores opportunities, drafts personalized outreach, and — with your approval — helps turn replies into meetings.
 
@@ -43,7 +43,23 @@ SUPABASE_SERVICE_ROLE_KEY=
 
 Enable RLS policies before going live.
 
-## AI (Groq)
+## Google sign-in (Supabase Auth)
+
+1. Google Cloud Console → OAuth client (Web)
+2. Authorized redirect URI (Supabase, not your app):
+   `https://txbttmhzbqbvfmjdqgvf.supabase.co/auth/v1/callback`
+3. Supabase Dashboard → **Authentication** → **Providers** → **Google**
+   - Paste Client ID + Client Secret
+   - Enable the provider
+4. Supabase → **Authentication** → **URL configuration**
+   - Site URL: `http://localhost:3000` (and production URL when live)
+   - Redirect URLs:
+     - `http://localhost:3000/auth/callback`
+     - `https://zumeliascout.vercel.app/auth/callback`
+5. App login page → **Continue with Google**
+
+`GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` in `.env` are for Gmail sending later (Integrations), not required for Supabase login.
+
 
 1. Create an account at [console.groq.com](https://console.groq.com)
 2. Open [API Keys](https://console.groq.com/keys) → Create API Key
@@ -59,7 +75,7 @@ AI_PROVIDER=groq
 
 Faster/cheaper option: `GROQ_MODEL=llama-3.1-8b-instant`
 
-OpenAI/Anthropic keys are optional; Scouter uses Groq when `AI_PROVIDER=groq`.
+OpenAI/Anthropic keys are optional; Zumelia Scout uses Groq when `AI_PROVIDER=groq`.
 
 
 Configure Google / Microsoft client IDs in `.env`. Tokens must be encrypted with `TOKEN_ENCRYPTION_KEY`. Never ask users for email passwords.
