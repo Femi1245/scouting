@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ServiceProfile {
+  id        String   @id @default(cuid())
+  offer     String   @default("Custom websites for local businesses")
+  fromName  String   @default("Scouter")
+  fromEmail String   @default("")
+  pitchTone String   @default("friendly and professional")
+  cta       String   @default("Would you be open to a quick 15-minute call this week?")
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model Lead {
+  id           String       @id @default(cuid())
+  businessName String
+  category     String?
+  city         String?
+  address      String?
+  phone        String?
+  email        String?
+  websiteUrl   String?
+  source       String       @default("Google Business")
+  notes        String?
+  status       String       @default("new")
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  pitches      Pitch[]
+  emailEvents  EmailEvent[]
+}
+
+model Pitch {
+  id        String       @id @default(cuid())
+  leadId    String
+  lead      Lead         @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  subject   String
+  body      String
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  sentAt    DateTime?
+  events    EmailEvent[]
+}
+
+model EmailEvent {
+  id         String   @id @default(cuid())
+  leadId     String
+  lead       Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  pitchId    String
+  pitch      Pitch    @relation(fields: [pitchId], references: [id], onDelete: Cascade)
+  providerId String?
+  status     String
+  createdAt  DateTime @default(now())
+}

@@ -1,0 +1,3 @@
+businessName,category,city,address,phone,email,websiteUrl,source,notes
+Sunrise Dental,Dentist,Austin,123 Main St,512-555-0100,hello@example.com,,Google Business,No website on listing
+Bluebird Cafe,Cafe,Austin,45 Oak Ave,512-555-0199,cafe@example.com,https://bluebird.example,Google Business,Has basic site
